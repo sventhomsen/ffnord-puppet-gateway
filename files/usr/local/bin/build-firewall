@@ -104,4 +104,4 @@ done
 
 . /etc/rclocal.d/firewall-values
 
-/usr/sbin/service iptables-persistent save
+/usr/sbin/service netfilter-persistent save
