@@ -40,7 +40,7 @@ class ffnord::firewall (
   }
 
   service {
-    'iptables-persistent':
+    'netfilter-persistent':
        ensure => running,
        hasrestart => true,
        enable => true,
