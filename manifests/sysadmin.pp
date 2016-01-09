@@ -16,10 +16,10 @@ class ff_gw::sysadmin($zabbixserver = '127.0.0.1', $muninserver = '127.0.0.1', $
     always_apt_update => true
   }
   # use backports repo
-  apt::source { 'wheezy-backports':
-    location => 'http://ftp.de.debian.org/debian/',
-    release  => 'wheezy-backports',
-    repos    => 'main',
+  #apt::source { 'wheezy-backports':
+  #  location => 'http://ftp.de.debian.org/debian/',
+  #  release  => 'wheezy-backports',
+  #  repos    => 'main',
   }
   # batman repo
   apt::source { 'universe-factory':
