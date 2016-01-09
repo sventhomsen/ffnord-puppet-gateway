@@ -39,8 +39,13 @@ class ffnord::firewall (
       ensure => installed;
   }
 
+  $iptablespersistentservice=$lsbdistcodename ? {
+	'jessie' => 'netfilter-persistent',
+	default  => 'iptables-persistent',
+ }
+
   service {
-    'netfilter-persistent':
+    $iptablespersistentservice:
        ensure => running,
        hasrestart => true,
        enable => true,
@@ -58,7 +63,7 @@ class ffnord::firewall (
       owner => 'root',
       group => 'root',
       mode => '0755',
-      source => "puppet:///modules/ffnord/usr/local/bin/build-firewall";
+      source => ["puppet:///modules/ffnord/usr/local/bin/build-firewall.$lsbdistcodename","puppet:///modules/ffnord/usr/local/bin/build-firewall"];
     '/etc/iptables.d/000-RESET': 
       ensure => file,
       owner => 'root',
